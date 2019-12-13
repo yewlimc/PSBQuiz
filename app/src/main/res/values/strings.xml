@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PSBQuiz</string>
+    <string name="forgotPasswordText">If you need to reset your password, please contact Student Services.</string>
+</resources>
