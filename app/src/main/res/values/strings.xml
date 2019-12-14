@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">PSBQuiz</string>
+    <string name="app_name">PSB Quiz</string>
     <string name="forgotPasswordText">If you need to reset your password, please contact Student Services.</string>
+    <string name="quizMenuTitle">If there are quizzes available to be done, they will appear here.</string>
+    <string name="quizPreparationDisclaimer">Disclaimer: This session will be calculated as one attempt, do not exit this session during the quiz.</string>
 </resources>
