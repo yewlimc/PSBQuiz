@@ -40,6 +40,8 @@ public class QuizGameActivity extends AppCompatActivity {
     private RadioButton buttonC;
     private RadioButton buttonD;
 
+    private RadioButton radioButton;
+
     private Button doneButton;
     private TextView answeredTotal;
     private TextView totalQuestions;
@@ -52,7 +54,7 @@ public class QuizGameActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     public static ArrayList<Questions> questionList = new ArrayList<>();
 
-    int index = 0;
+    int index = 1;
     int thisQ = 0;
     int questionsNum = 10;
     int score = 0;
@@ -100,6 +102,13 @@ public class QuizGameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(buttonA.isChecked() || buttonB.isChecked() || buttonC.isChecked() || buttonD.isChecked())
                 {
+                    int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                    // find the radiobutton by returned id
+                    radioButton = (RadioButton) findViewById(selectedId);
+
+                    Toast.makeText(getApplicationContext(),
+                            radioButton.getText(), Toast.LENGTH_SHORT).show();
                     checkAnswer();
                 }
                 else
@@ -155,6 +164,8 @@ public class QuizGameActivity extends AppCompatActivity {
         int id = radioGroup.indexOfChild(rbSelected);
         String answered = "answer";
         String correctAnswer = questionList.get(index).getCorrectAnswer();
+        String correctAnswerDesc = questionList.get(index).getCorrectAnswerDesc();
+
         Log.v("Question check answer: ", questionList.get(index).getQuestion());
 
         // 0 = A, 1 = B, etc.
@@ -181,8 +192,10 @@ public class QuizGameActivity extends AppCompatActivity {
             }
         }
 
-        AnsweredQuestions aq = new AnsweredQuestions(questionList.get(index).getQuestion(), answered, correctAnswer);
+        AnsweredQuestions aq = new AnsweredQuestions(questionList.get(index).getQuestion(), radioButton.getText().toString(), correctAnswer, correctAnswerDesc);
+
         answeredList.add(aq);
+
         Log.v("QuestionsAnswered: ", aq.getQuestion());
         Log.v("QuestionsAnswered: ", aq.getCorrectAnswer());
         Log.v("QuestionsAnswered: ", aq.getAnswered());

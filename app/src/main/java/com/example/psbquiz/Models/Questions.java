@@ -2,11 +2,12 @@ package com.example.psbquiz.Models;
 
 public class Questions {
 
-    String question, correctAnswer, answerA, answerB, answerC, answerD;
+    String question, correctAnswer, correctAnswerDesc, answerA, answerB, answerC, answerD;
 
-    public Questions(String question, String correctAnswer, String answerA, String answerB, String answerC, String answerD) {
+    public Questions(String question, String correctAnswer, String correctAnswerDesc, String answerA, String answerB, String answerC, String answerD) {
         this.question = question;
         this.correctAnswer = correctAnswer;
+        this.correctAnswerDesc = correctAnswerDesc;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
@@ -23,6 +24,14 @@ public class Questions {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public String getCorrectAnswerDesc() {
+        return correctAnswerDesc;
+    }
+
+    public void setCorrectAnswerDesc(String correctAnswerDesc) {
+        this.correctAnswerDesc = correctAnswerDesc;
     }
 
     public void setAnswerA(String answerA) {

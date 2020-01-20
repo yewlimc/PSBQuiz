@@ -43,7 +43,7 @@ public class QuizCompletedAdapter extends ArrayAdapter<AnsweredQuestions> {
 
         question.setText(answeredQuestions.get(position).getQuestion());
         answered.setText(answeredQuestions.get(position).getAnswered());
-        correctAnswer.setText(answeredQuestions.get(position).getCorrectAnswer());
+        correctAnswer.setText(answeredQuestions.get(position).getCorrectAnswerDesc());
 
         return v;
     }

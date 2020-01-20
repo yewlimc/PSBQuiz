@@ -10,11 +10,14 @@ public class AnsweredQuestions implements Parcelable {
     String question;
     String answered;
     String correctAnswer;
+    String correctAnswerDesc;
+
 
     public AnsweredQuestions(Parcel in) {
         this.question = in.readString();
         this.answered = in.readString();
         this.correctAnswer = in.readString();
+        this.correctAnswerDesc = in.readString();
     }
 
     @Override
@@ -27,6 +30,7 @@ public class AnsweredQuestions implements Parcelable {
         dest.writeString(question);
         dest.writeString(answered);
         dest.writeString(correctAnswer);
+        dest.writeString(correctAnswerDesc);
     }
 
     public static final Creator<AnsweredQuestions> CREATOR = new Creator<AnsweredQuestions>() {
@@ -41,10 +45,11 @@ public class AnsweredQuestions implements Parcelable {
         }
     };
 
-    public AnsweredQuestions(String question, String answered, String correctAnswer) {
+    public AnsweredQuestions(String question, String answered, String correctAnswer, String correctAnswerDesc) {
         this.question = question;
         this.answered = answered;
         this.correctAnswer = correctAnswer;
+        this.correctAnswerDesc = correctAnswerDesc;
     }
 
 
@@ -72,5 +77,11 @@ public class AnsweredQuestions implements Parcelable {
         this.correctAnswer = correctAnswer;
     }
 
+    public String getCorrectAnswerDesc() {
+        return correctAnswerDesc;
+    }
 
+    public void setCorrectAnswerDesc(String correctAnswerDesc) {
+        this.correctAnswerDesc = correctAnswerDesc;
+    }
 }
