@@ -221,10 +221,9 @@ public class QuizGameActivity extends AppCompatActivity {
 
             Log.v("doneIntentList: ", answeredList.toString());
 
-            doneIntent.putExtra("aL", answeredList);
+            doneIntent.putExtra("RIGHT_ANSWER_COUNT", score);
             Bundle bundle = new Bundle();
             bundle.putParcelableArrayList("aL", answeredList);
-
             //doneIntent.putExtra("aL", ArrayList<AnsweredQuestions>answeredList);
 //            bundle.putString(courseKey, course);
             doneIntent.putExtras(bundle);
