@@ -13,16 +13,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.example.psbquiz.Adapters.QuizCompletedAdapter;
 import com.example.psbquiz.Models.AnsweredQuestions;
-import com.example.psbquiz.Activities.history;
 import com.example.psbquiz.R;
 
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 public class QuizCompleteActivity extends AppCompatActivity {
 
     private ListView listView;
     private Button completed_doneButton;
-    TextView scores,c_scores;
+    TextView scores;
+    TextView f_scores,s_scores,t_scores;
+    int lastscore;
+    int best1, best2, best3;
 
     ArrayList<AnsweredQuestions> answeredQuestions;
 
@@ -32,13 +35,56 @@ public class QuizCompleteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_complete);
 
         scores = (TextView) findViewById(R.id.scores);
+        f_scores = (TextView) findViewById(R.id.f_scores);
+        s_scores = (TextView) findViewById(R.id.s_scores);
+        t_scores = (TextView) findViewById(R.id.t_scores);
+
 
         int score = getIntent().getIntExtra("RIGHT_ANSWER_COUNT",0);
-        SharedPreferences sharePreferences = getSharedPreferences("QUIZ_DATA", Context.MODE_PRIVATE);
-        int scores1 = sharePreferences.getInt("scores",0);
-
+        SharedPreferences Preferences = getSharedPreferences("QUIZ_DATA", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = Preferences.edit();
+        editor.putInt("Score",score);
+        editor.apply();
+        int scores1 = Preferences.getInt("scores",0);
         scores1 += score;
-        scores.setText("SCORES: "+score+"/10");
+
+        scores.setText("Current SCORES: "+score+"/10");
+
+        best1 = Preferences.getInt("best1",0);
+        best2 = Preferences.getInt("best2",0);
+        best3 = Preferences.getInt("best3",0);
+
+        if(score > best3){
+            best3 = score;
+            SharedPreferences.Editor editor1 = Preferences.edit();
+            editor1.putInt("best3",best3);
+            editor1.apply();
+        }
+
+        if(score > best2){
+            int temp = best2;
+            best2 = score;
+            best3 = temp;
+            SharedPreferences.Editor editor2 = Preferences.edit();
+            editor2.putInt("best3",best3);
+            editor2.putInt("best2",best2);
+            editor2.apply();
+        }
+
+        if(score > best1){
+            int temp = best1;
+            best1 = score;
+            best2 = temp;
+            SharedPreferences.Editor editor3 = Preferences.edit();
+            editor3.putInt("best2",best2);
+            editor3.putInt("best1",best1);
+            editor3.apply();
+        }
+
+
+        f_scores.setText("1st SCORES: "+best1+"/10");
+        s_scores.setText("2nd SCORES: "+best2+"/10");
+        t_scores.setText("3rd SCORES: "+best3+"/10");
 
 
         Intent intent = getIntent();
@@ -58,8 +104,8 @@ public class QuizCompleteActivity extends AppCompatActivity {
         completed_doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent history = new Intent(getApplicationContext(), history.class);
-                startActivity(history);
+                Intent home = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(home);
             }
         });
 
