@@ -47,6 +47,7 @@ public class QuizGameActivity extends AppCompatActivity {
     private TextView totalQuestions;
 
     private TextView questionText;
+    private TextView scoreText;
 
     public ArrayList<AnsweredQuestions> answeredList = new ArrayList<>();
 
@@ -93,6 +94,7 @@ public class QuizGameActivity extends AppCompatActivity {
         answeredTotal = findViewById(R.id.answeredTotal);
         totalQuestions = findViewById(R.id.totalQuestions);
         totalQuestions.setText(Integer.toString(questionsNum));
+        scoreText = findViewById(R.id.marksScore);
 
         // showQuestion(0);
 
@@ -107,8 +109,8 @@ public class QuizGameActivity extends AppCompatActivity {
                     // find the radiobutton by returned id
                     radioButton = (RadioButton) findViewById(selectedId);
 
-                    Toast.makeText(getApplicationContext(),
-                            radioButton.getText(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),
+//                            radioButton.getText(), Toast.LENGTH_SHORT).show();
                     checkAnswer();
                 }
                 else
@@ -168,6 +170,8 @@ public class QuizGameActivity extends AppCompatActivity {
 
         Log.v("Question check answer: ", questionList.get(index).getQuestion());
 
+        Toast.makeText(getApplicationContext(), correctAnswerDesc, Toast.LENGTH_SHORT).show();
+
         // 0 = A, 1 = B, etc.
         switch(id){
             case 0:
@@ -204,7 +208,9 @@ public class QuizGameActivity extends AppCompatActivity {
         if (answered.equals(correctAnswer))
         {
             Log.v("Answered: ", "Correct");
-            score = score + 1;
+            score = score + 10;
+            scoreText.setText(""+score);
+
 
             // [question, answered, correctAnswer]
         }

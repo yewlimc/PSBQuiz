@@ -48,7 +48,7 @@ public class QuizCompleteActivity extends AppCompatActivity {
         int scores1 = Preferences.getInt("scores",0);
         scores1 += score;
 
-        scores.setText("Current SCORES: "+score+"/10");
+        scores.setText("Score: "+score+"/100");
 
         best1 = Preferences.getInt("best1",0);
         best2 = Preferences.getInt("best2",0);
@@ -82,9 +82,9 @@ public class QuizCompleteActivity extends AppCompatActivity {
         }
 
 
-        f_scores.setText("1st SCORES: "+best1+"/10");
-        s_scores.setText("2nd SCORES: "+best2+"/10");
-        t_scores.setText("3rd SCORES: "+best3+"/10");
+        f_scores.setText("1st Score: "+best1+"/100");
+        s_scores.setText("2nd Score: "+best2+"/100");
+        t_scores.setText("3rd Score: "+best3+"/100");
 
 
         Intent intent = getIntent();
