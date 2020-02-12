@@ -1,7 +1,6 @@
 package com.example.psbquiz.Models;
 
 public class Questions {
-
     String question, correctAnswer, correctAnswerDesc, answerA, answerB, answerC, answerD;
 
     public Questions(String question, String correctAnswer, String correctAnswerDesc, String answerA, String answerB, String answerC, String answerD) {

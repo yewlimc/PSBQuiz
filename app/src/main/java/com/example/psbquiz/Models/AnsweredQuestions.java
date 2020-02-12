@@ -52,6 +52,8 @@ public class AnsweredQuestions implements Parcelable {
         this.correctAnswerDesc = correctAnswerDesc;
     }
 
+    public AnsweredQuestions() {
+    }
 
     public String getQuestion() {
         return question;

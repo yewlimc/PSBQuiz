@@ -8,7 +8,13 @@ import static org.junit.Assert.*;
 public class QuestionsTest {
 
     private Questions questions;
-    private String question = "question", correctAnswer = "correctAnswer", correctAnswerDesc = "correctAnswerDesc", answerA = "answer", answerB = "answer", answerC = "answer", answerD = "answer";
+    private String question = "question";
+    private String correctAnswer = "correctAnswer";
+    private String correctAnswerDesc = "correctAnswerDesc";
+    private String answerA = "answer";
+    private String answerB = "answer";
+    private String answerC = "answer";
+    private String answerD = "answer";
 
     @Before
     public void setUp() throws Exception {
@@ -71,3 +77,4 @@ public class QuestionsTest {
         assertEquals("AnswerD is not set as expected. ", answerD, questions.getAnswerD());
     }
 }
+
